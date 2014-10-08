@@ -1,4 +1,4 @@
-# A counter type 
+# A counter type
 
 type Accumulator{T, V<:Number}
 	map::Dict{T,V}
@@ -6,7 +6,7 @@ end
 
 ## constructors
 
-Accumulator{T,V<:Number}(::Type{T}, ::Type{V}) = Accumulator{T,V}((T=>V)[])
+Accumulator{T,V<:Number}(::Type{T}, ::Type{V}) = Accumulator{T,V}(Dict{T,V}())
 counter(T::Type) = Accumulator(T,Int)
 
 Accumulator{T,V<:Number}(dct::Dict{T,V}) = Accumulator{T,V}(copy(dct))
@@ -36,7 +36,7 @@ keys(ct::Accumulator) = keys(ct.map)
 ## iteration
 
 start(ct::Accumulator) = start(ct.map)
-next(ct::Accumulator, state) = next(ct.map, state) 
+next(ct::Accumulator, state) = next(ct.map, state)
 done(ct::Accumulator, state) = done(ct.map, state)
 
 
